@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneManager : MonoBehaviour
 {
+    #region Scene Loading Methods
     // Loads a scene based on Index, assuming that scene is added into build settings
     public void LoadSceneWithIndex(int _sceneIndex)
     {
@@ -16,4 +17,6 @@ public class LoadSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene(_sceneName);
     }
+
+    #endregion
 }

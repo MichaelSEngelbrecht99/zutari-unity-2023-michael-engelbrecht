@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScreenWrapPlayer : MonoBehaviour
 {
     [Header("Screen Bounds View & Buffer/Distance Setting")]
+    [Header("====================")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] float screenLeftConstraint = Screen.width;
     [SerializeField] float screenRightConstraint = Screen.width;
@@ -22,12 +23,7 @@ public class ScreenWrapPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Gets constraints based on screen's resolution/aspect ration (camera view)
-        distanceZ = Mathf.Abs(mainCamera.transform.position.z + transform.position.z);
-        screenLeftConstraint = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, distanceZ)).x;
-        screenRightConstraint = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0, distanceZ)).x;
-        screenBottomConstraint = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, distanceZ)).z;
-        screenTopConstraint = mainCamera.ScreenToWorldPoint(new Vector3(0, Screen.height, distanceZ)).z;
+        GetScreenConstraints();
     }
 
     // FixedUpdate is called every fixed frame-rate frame
@@ -36,6 +32,17 @@ public class ScreenWrapPlayer : MonoBehaviour
         RepositionPlayer();
     }
 
+    #region Determine and reposition Player methods
+
+    // Gets constraints based on screen's resolution/aspect ration (camera view)
+    public void GetScreenConstraints()
+    {
+        distanceZ = Mathf.Abs(mainCamera.transform.position.z + transform.position.z);
+        screenLeftConstraint = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, distanceZ)).x;
+        screenRightConstraint = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0, distanceZ)).x;
+        screenBottomConstraint = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, distanceZ)).z;
+        screenTopConstraint = mainCamera.ScreenToWorldPoint(new Vector3(0, Screen.height, distanceZ)).z;
+    }
     // Reposition player if out of bounds of camera
     public void RepositionPlayer()
     {
@@ -59,4 +66,5 @@ public class ScreenWrapPlayer : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, screenBottomConstraint - buffer);
         }
     }
+    #endregion
 }

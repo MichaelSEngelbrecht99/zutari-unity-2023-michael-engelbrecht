@@ -6,13 +6,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
+    [Header("====================")]
     [SerializeField, Range(1f, 1000)] private float playerMovementSpeed = 1;
     [SerializeField, Range(0.01f, 100)] private float playerDragForce = 1;
+    [SerializeField, Range(0.01f, 100)] private float incrementSize = 0.01f;
     [SerializeField] private bool movingLeft, movingRight, movingUp, movingDown;
 
     [Header("UI Settings")]
+    [Header("====================")]
     [SerializeField] private TextMeshProUGUI dragText;
     [SerializeField] private TextMeshProUGUI velocityText;
+    [SerializeField] private TextMeshProUGUI incrementSizeText;
 
     private Rigidbody rb;
     private Material playerCubeRenderer;
@@ -22,15 +26,17 @@ public class PlayerController : MonoBehaviour
     {
         playerCubeRenderer = GetComponent<Renderer>().sharedMaterial;
         rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateRigidValues();
         PlayerInput();
-        PlayerAdjustDrag();
     }
 
+    #region Player Settings and Methods
     // Called every frame to register player input. Used to move up, down, left, and right using WASD (Supports diagonal movement as well)
     public void PlayerInput()
     {
@@ -125,28 +131,45 @@ public class PlayerController : MonoBehaviour
             rb.angularDrag = playerDragForce;
         }
     }
+    #endregion
 
+    #region UI Settings and Methods
+    // UI Button events to increase/decrease Drag and Velocity of Player Cube
     public void IncreaseDrag()
     {
-        rb.drag = rb.drag + 0.05f;
-        dragText.text = string.Format("{0} {1}", rb.drag, "Drag");
+        playerDragForce = rb.drag + incrementSize;
+        UpdateRigidValues();
     }
-
     public void DecreseDrag()
     {
-        rb.drag = rb.drag - 0.05f;
-        dragText.text = string.Format("{0} {1}", rb.drag, "Drag");
+        playerDragForce = rb.drag - incrementSize;
+        UpdateRigidValues();
     }
-
     public void IncreaseVelocity()
     {
-        playerMovementSpeed = playerMovementSpeed + 0.05f;
-        velocityText.text = string.Format("{0} {1}", playerMovementSpeed, "Drag");
+        playerMovementSpeed = playerMovementSpeed + incrementSize;
+        UpdateRigidValues();
     }
-
     public void DecreaseVelocity()
     {
-        playerMovementSpeed = playerMovementSpeed - 0.05f;
-        velocityText.text = string.Format("{0} {1}", playerMovementSpeed, "Drag");
+        playerMovementSpeed = playerMovementSpeed - incrementSize;
+        UpdateRigidValues();
     }
+    public void IncreaseIncrementSize()
+    {
+        incrementSize = incrementSize + (incrementSize/2);
+    }
+    public void DecreaseIncrementSize()
+    {
+        incrementSize = incrementSize - (incrementSize/2);
+    }
+    public void UpdateRigidValues()
+    {
+        dragText.text = string.Format("{0} {1}", playerDragForce.ToString("F2"), "Drag");
+        velocityText.text = string.Format("{0} {1}", playerMovementSpeed.ToString("F2"), "Velocity");
+        incrementSizeText.text = string.Format("{0} {1}", incrementSize.ToString("F2"), "Increment Amount");
+        PlayerAdjustDrag();
+    }
+    #endregion
+
 }
