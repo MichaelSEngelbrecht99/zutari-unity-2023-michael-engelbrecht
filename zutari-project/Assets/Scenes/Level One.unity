@@ -209,15 +209,15 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 624963380}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: IncreaseVelocity
-        m_Mode: 1
+        m_MethodName: AdjustVelocity
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &67825976
 MonoBehaviour:
@@ -605,8 +605,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 624963380}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: DecreseDrag
-        m_Mode: 1
+        m_MethodName: AdjustDrag
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1248,15 +1248,15 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 624963380}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: IncreaseIncrementSize
-        m_Mode: 1
+        m_MethodName: AdjustIncrements
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &640998417
 MonoBehaviour:
@@ -1681,15 +1681,15 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 624963380}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: IncreaseDrag
-        m_Mode: 1
+        m_MethodName: AdjustDrag
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &932507144
 MonoBehaviour:
@@ -2676,8 +2676,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 624963380}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: DecreaseVelocity
-        m_Mode: 1
+        m_MethodName: AdjustVelocity
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3011,8 +3011,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 624963380}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: DecreaseIncrementSize
-        m_Mode: 1
+        m_MethodName: AdjustIncrements
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

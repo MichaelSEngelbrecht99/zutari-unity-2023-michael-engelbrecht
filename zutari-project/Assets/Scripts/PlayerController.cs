@@ -135,33 +135,48 @@ public class PlayerController : MonoBehaviour
 
     #region UI Settings and Methods
     // UI Button events to increase/decrease Drag and Velocity of Player Cube
-    public void IncreaseDrag()
+    public void AdjustDrag(bool dir)
     {
-        playerDragForce = rb.drag + incrementSize;
-        UpdateRigidValues();
+        switch (dir)    // True = Increase ; False = Decrease
+        {
+            case true:
+                playerDragForce = rb.drag + incrementSize;
+                UpdateRigidValues();
+                break;
+            case false:
+                playerDragForce = rb.drag - incrementSize;
+                UpdateRigidValues();
+                break;
+        }
+
     }
-    public void DecreseDrag()
+
+    public void AdjustVelocity(bool dir)
     {
-        playerDragForce = rb.drag - incrementSize;
-        UpdateRigidValues();
+        switch (dir)    // True = Increase ; False = Decrease
+        {
+            case true:
+                playerMovementSpeed = playerMovementSpeed + incrementSize;
+                UpdateRigidValues();
+                break;
+            case false:
+                playerMovementSpeed = playerMovementSpeed - incrementSize;
+                UpdateRigidValues();
+                break;
+        }
     }
-    public void IncreaseVelocity()
+
+    public void AdjustIncrements(bool dir)
     {
-        playerMovementSpeed = playerMovementSpeed + incrementSize;
-        UpdateRigidValues();
-    }
-    public void DecreaseVelocity()
-    {
-        playerMovementSpeed = playerMovementSpeed - incrementSize;
-        UpdateRigidValues();
-    }
-    public void IncreaseIncrementSize()
-    {
-        incrementSize = incrementSize + (incrementSize/2);
-    }
-    public void DecreaseIncrementSize()
-    {
-        incrementSize = incrementSize - (incrementSize/2);
+        switch (dir)    // True = Increase ; False = Decrease
+        {
+            case true:
+                incrementSize = incrementSize + incrementSize;
+                break;
+            case false:
+                incrementSize = incrementSize - (incrementSize / 2);
+                break;
+        }
     }
     public void UpdateRigidValues()
     {
