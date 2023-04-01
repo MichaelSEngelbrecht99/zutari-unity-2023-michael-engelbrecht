@@ -178,6 +178,7 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
     public void UpdateRigidValues()
     {
         dragText.text = string.Format("{0} {1}", playerDragForce.ToString("F2"), "Drag");
