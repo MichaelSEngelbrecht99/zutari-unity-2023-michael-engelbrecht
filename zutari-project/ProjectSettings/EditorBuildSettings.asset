@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level One.unity
     guid: 9097f7eed73e8b14392c973a0648a47e
+  - enabled: 1
+    path: Assets/Scenes/WeatherApp.unity
+    guid: 4e9ce7a4f9977ff4789e340f16f7b320
   m_configObjects: {}
